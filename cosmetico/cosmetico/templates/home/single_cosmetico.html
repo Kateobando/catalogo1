@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Cosmeticos
+{% endblock %}
+
+{% block content %}
+	<h1>{{ cosmetico.nombre }}</h1>
+	{% if cosmetico.imagen %}
+		<img src="/media/{{ cosmetico.imagen }}"  width ="400px">
+	{% endif %}
+	<br>
+	<p><b>Marca:</b> {{ cosmetico.marca }} </p>
+	<p><b>Descripcion:</b> {{ cosmetico.descripcion }}</p>
+	<p><b>Precio:</b> $ {{ cosmetico.precio }}</p>
+	<p><b>Cantidad:</b> {{ cosmetico.cantidad }}</p>
+	<p><b>Color:</b> {{ cosmetico.color }}</p>
+	<p><b>Instrucciones:</b> {{ cosmetico.instrucciones }}</p>
+	<p><b>Advertencias:</b> {{ cosmetico.advertencias }}</p>
+	<p><b>Ingredientes:</b> {{ cosmetico.ingredientes }}</p>
+	<p><b>Stock:</b> {{ cosmetico.stock }} unidades</p>
+	{% for c in categorias %}
+		<span class="label label-info">{{ c.nombre }}</span>
+	{% endfor %}
+
+	<br>
+	<a href="/cosmeticos/page/1">Mostrar la lista de Productos</a>
+{% endblock %}

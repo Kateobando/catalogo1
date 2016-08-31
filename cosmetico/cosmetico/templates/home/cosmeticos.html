@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}
+	Productos
+{% endblock %}
+
+{% block content %}
+	<h1>Lista de Productos</h1>
+	<br>
+	{% if cosmeticos %}
+	<table class = "table table-hover">
+		<theader>
+			<tr>
+				<th>Productos</th>
+				<th>Precio</th>
+				<th>Stock</th>
+			</th>
+		</theader>
+		{% for p in cosmeticos %}
+			<tbody>
+				<tr>
+					<td>{{ p.nombre }}</td>
+					<td>{{ p.precio }}</td>
+					<td>{{ p.stock }}</td>
+					<td><a class="btn btn-info" href="/cosmetico/{{p.id}}" > <li class = "icon-search"></li> Ver </a></td>
+				</tr>
+			</tbody>
+		{% endfor %}
+	</table>
+
+	{% else %}
+		<h2>No existen productos activos a la venta </h2>
+	{% endif %}
+
+	{% if cosmeticos %}
+	<div class="pagination">
+
+		<div class="pagination pagination-centered">
+			<ul>
+				<li><a href="/cosmeticos/page/1" > << </a></li>
+				{% if cosmeticos.has_previous %}
+				<li><a href="/cosmeticos/page/{{ cosmeticos.previous_page_number }}"> Anterior </a></li>
+				{% else %}
+					<li><a href="#"> Anterior </a></li>
+				{% endif %}
+
+				{% if cosmeticos.has_next %}
+					<li><a href="/cosmeticos/page/{{ cosmeticos.next_page_number }}"> Siguiente </a></li>
+				{% else %}
+					<li><a href="#"> Siguiente </a></li>
+				{% endif %}
+					<li><a href="/cosmeticos/page/{{ cosmeticos.paginator.num_pages }}"> >> </a></li>
+			</ul>
+		</div>
+	</div>
+			<br>
+			<h4>Pagina {{ cosmeticos.number }} de {{ cosmeticos.paginator.num_pages }}</h4>
+	{% endif %}
+
+{% endblock %}

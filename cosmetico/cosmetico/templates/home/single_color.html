@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Color
+{% endblock %}
+
+{% block content %}
+	<h1>{{ color.nombre }}</h1>
+	{% if color.imagen %}
+		<img src="/media/{{ color.imagen }}" width ="80px">
+	{% endif %}
+	<br>
+	<p><b>Marca:</b> {{ color.marca }} </p>
+	<p><b>Hexadecimal:</b> {{ color.hexadecimal }}</p>
+	{% for c in categorias %}
+		<span class="label label-info">{{ c.nombre }}</span>
+	{% endfor %}
+
+	<br>
+	<a href="/color/page/1">Mostrar la lista de Categoria</a>
+{% endblock %}

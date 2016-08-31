@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Advertencias
+{% endblock %}
+
+{% block content %}
+	<h1>{{ advertencias.nombre }}</h1>
+	{% if advertencias.imagen %}
+		<img src="/media/{{ advertencias.imagen }}" width ="80px">
+	{% endif %}
+	<br>
+	<p><b>Marca:</b> {{ advertencias.marca }} </p>
+	<p><b>Descripcion:</b> {{ advertencias.descripcion }}</p>
+	{% for c in categorias %}
+		<span class="label label-info">{{ c.nombre }}</span>
+	{% endfor %}
+
+	<br>
+	<a href="/advertencias/page/1">Mostrar la lista de Categoria</a>
+{% endblock %}

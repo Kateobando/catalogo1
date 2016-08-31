@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Ingredientes
+{% endblock %}
+
+{% block content %}
+	<h1>{{ ingredientes.nombre }}</h1>
+	{% if ingredientes.imagen %}
+		<img src="/media/{{ ingredientes.imagen }}" width ="80px">
+	{% endif %}
+	<br>
+	<p><b>Marca:</b> {{ ingredientes.marca }} </p>
+	<p><b>Descripcion:</b> {{ ingredientes.descripcion }}</p>
+	{% for c in categorias %}
+		<span class="label label-info">{{ c.nombre }}</span>
+	{% endfor %}
+
+	<br>
+	<a href="/ingredeintes/page/1">Mostrar la lista de Categoria</a>
+{% endblock %}

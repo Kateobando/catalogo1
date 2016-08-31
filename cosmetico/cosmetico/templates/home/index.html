@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Inicio
+{% endblock %}
+
+{% block content %}
+	<style type="text/css">
+		body{
+			background-image: url("media/images/fondo.jpg");
+		}
+	</style>	
+	<center><h2>Bienvenidos a nuestro cat&aacute;logo de cosm&eacute;ticos aqu&iacute; encontraras el estilo que necesitas para tu personalidad.<h2></center>
+	<br>
+	<center><h2>Maquillaje</h2></center>	
+	<img src ="media/images/fondo1.png" width = "850px" heigth = "700px"/>
+	<br>
+	<center><h2>Perfumes para Hombre y Mujer</h2></center>
+	<img src ="media/images/perfumes.jpg" width = "850px" heigth = "700px"/>
+	<br>
+	<center><h2>Algunos de nuestros productos</h2></center>
+	<img src ="media/images/logos.png" width = "850px" heigth = "700px"/>
+	{% if user.get_profile.photo %}
+		<img src="/media/{{ user.get_profile.photo }}" width = "100px" heigth = "100px"/>
+	{% endif %}
+	{% if user.get_profile.telefono %}
+		<p>Numero Telefonico : {{ user.get_profile.telefono }}</p>
+	{% endif %}
+{% endblock %}
